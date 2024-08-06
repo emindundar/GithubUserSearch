@@ -21,19 +21,34 @@
       .navbar {
         height: 100px;
         background-color: #2c3333;
+        width: 100%;
       }
+    
       .card {
-        background-color: #cbe4de;
+        background-color:rgba(203, 228, 222, 0.5);
       }
       .card-text {
         word-wrap: break-word;
-        word-break: break-all;
         overflow-wrap: break-word;
       }
       .card-title {
-        word-wrap: break-word;
         word-break: break-all;
-        overflow-wrap: break-word;
+      }
+      .card-body .card-text{
+      border: 1px solid;
+      border-radius: 5px;
+      padding: 3px;
+      background-color: rgb(255, 255, 255, 0.2);
+      font-size: 16px;
+      word-break: break-all;
+      
+        
+      }
+      .navbar-brand{
+      font-size: 20px;
+      font-weight: 600;
+      margin-left: 10px;
+      font-family:'Courier New', Courier, monospace;
       }
     </style>
   </head>
@@ -57,13 +72,8 @@
         request.send();
 
         request.addEventListener("load", function () {
-          if (this.status >= 200 && this.status < 300) {
             const data = JSON.parse(this.responseText);
             setProfile(data);
-          } else {
-            console.error("Hata:", this.statusText);
-            alert("User not found");
-          }
         });
         request.addEventListener("error", function () {
           console.error("REques failed.");
@@ -75,22 +85,22 @@
         const profile = document.getElementById("profile");
         const card = `
         <div class="d-flex justify-content-center align-items-center">
-          <div class="card text-dark d-flex justify-content-center align-items-center flex-row mt-3" style="width: 100%; max-width: 500px;">
+          <div class="card text-dark d-flex justify-content-center align-items-center flex-row mt-3" style="width:1000px;">
             <div class="d-flex align-items-center ms-3" style="flex: 1;">
               <img src="${
                 data.avatar_url
-              }" class="card-img-top card-img-bottom img-fluid" alt="photo" style="height: 100%; width:100%; object-fit: cover;">
+              }" class="card-img-top card-img-bottom img-fluid my-3" alt="photo" style="height: 100%; width:100%;">
             </div>
             <div class="card-body" style="flex: 2;">
-              <h5 class="card-title">User Name: ${data.login}</h5>
-              <p class="card-title">${data.name ? data.name : "No Name"}</p>
+              <h5 class="card-title text-center">User Name: ${data.login}</h5>
+              <p class="card-text">${data.name ? data.name : "No Name"}</p>
               <p class="card-text">${data.bio ? data.bio : "No Bio"}</p>
               <p class="card-text">Followers: ${data.followers}</p>
               <p class="card-text">Following: ${data.following}</p>
               <a href="${
                 data.html_url
-              }" target="_blank" class="btn btn-outline-secondary my-2">GitHub</a>
-              <a href="repos.html" class="btn btn-outline-secondary my-2">GitHub Repos</a>
+              }" target="_blank" class="btn btn-primary my-2">GitHub</a>
+              <a href="repos.html" class="btn btn-primary my-2">GitHub Repos</a>
             </div>
           </div>
         </div>`;

@@ -23,7 +23,7 @@
         background-color: #2c3333;
       }
       .card {
-        background-color: #cbe4de;
+        background-color:rgba(203, 228, 222, 0.5);
       }
       .card-text {
         word-wrap: break-word;
@@ -35,12 +35,21 @@
         word-break: break-all;
         overflow-wrap: break-word;
       }
+      .card-body .card-title{
+      border: 1px solid;
+      border-radius: 5px;
+      padding: 3px;
+      text-align: center;
+      font-size: 16px;
+      background-color: rgb(255, 255, 255, 0.2);
+      word-break: break-all;
+      }
     </style>
   </head>
   <body style="background-color: #2e4f4f">
     <nav class="navbar navbar-dark">
       <div class="container-fluid">
-        <a href="search.html" class="navbar-brand">Search Github Profile</a>
+        <a href="search.html" class="navbar-brand" style="font-size: 25px;font-weight: 600;margin-left: 10px;font-family:'Courier New', Courier, monospace;">Search Github Profile</a>
         <div class="d-flex">
           <div class="input-group">
             <div class="input-group-text" id="basic-addon1">@</div>
@@ -81,7 +90,7 @@
             listUser(data.items);
           } else {
             console.error("Hata:", this.statusText);
-            alert("User not found.");
+            alert("User not found."+errorMsg);
           }
         });
 
@@ -98,10 +107,10 @@
           const card = `
             <div class="col-12 col-md-4 mb-3">
               <div class="card text-dark d-flex justify-content-center align-items-center">
-                <img src="${user.avatar_url}" class="card-img-top" alt="photo" style="width: 100px; height: 100px; object-fit: cover;">
+                <img src="${user.avatar_url}" class="card-img-top card-img-bottom mt-2" alt="photo" style="width: 100px; height: 100px; object-fit: cover;">
                 <div class="card-body">
                   <h5 class="card-title">${user.login}</h5>
-                  <button class="btn btn-outline-secondary" onclick="setProfile('${user.login}')">Set Profile</button>
+                  <button class="btn btn-primary" onclick="setProfile('${user.login}')">Set Profile</button>
                 </div>
               </div>
             </div>`;
