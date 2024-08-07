@@ -25,7 +25,7 @@
       }
     
       .card {
-        background-color:rgba(203, 228, 222, 0.5);
+        background-color:rgb(57, 106, 106,0.5);
       }
       .card-text {
         word-wrap: break-word;
@@ -35,20 +35,22 @@
         word-break: break-all;
       }
       .card-body .card-text{
-      border: 1px solid;
-      border-radius: 5px;
+      border-radius: 10px;
       padding: 3px;
-      background-color: rgb(255, 255, 255, 0.2);
+      background-color: rgba(0, 0, 0, 0.2);
       font-size: 16px;
-      word-break: break-all;
-      
-        
+      word-break: break-all; 
+      color: white;
       }
       .navbar-brand{
       font-size: 20px;
       font-weight: 600;
       margin-left: 10px;
       font-family:'Courier New', Courier, monospace;
+      }
+      div p{
+      font-family:'Courier New', Courier, monospace;
+      font-weight: bold;
       }
     </style>
   </head>
@@ -85,7 +87,7 @@
         const profile = document.getElementById("profile");
         const card = `
         <div class="d-flex justify-content-center align-items-center">
-          <div class="card text-dark d-flex justify-content-center align-items-center flex-row mt-3" style="width:1000px;">
+          <div class="card text-dark d-flex justify-content-center align-items-center flex-row mt-3" style="width:850px;">
             <div class="d-flex align-items-center ms-3" style="flex: 1;">
               <img src="${
                 data.avatar_url
@@ -118,6 +120,8 @@
         const username = localStorage.getItem("selectedUsername");
           window.location.href = "repos.html";
       }
+
+     
     </script>
   </body>
 </html>

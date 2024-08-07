@@ -23,7 +23,7 @@
         background-color: #2c3333;
       }
       .card {
-        background-color:rgba(203, 228, 222, 0.5);
+        background-color: rgb(57, 106, 106);
       }
       .card-text {
         word-wrap: break-word;
@@ -35,21 +35,34 @@
         word-break: break-all;
         overflow-wrap: break-word;
       }
-      .card-body .card-title{
-      border: 1px solid;
-      border-radius: 5px;
-      padding: 3px;
-      text-align: center;
-      font-size: 16px;
-      background-color: rgb(255, 255, 255, 0.2);
-      word-break: break-all;
+      .card-body .card-title {
+        border-radius: 10px;
+        padding: 3px;
+        text-align: center;
+        font-size: 16px;
+        background-color: rgba(0, 0, 0, 0.2);
+        word-break: break-all;
+        color: white;
       }
+      .img {
+      border-radius: 50%;
+    }
     </style>
   </head>
-  <body style="background-color: #2e4f4f">
+  <body style="background-color: rgb(46, 79, 79)">
     <nav class="navbar navbar-dark">
       <div class="container-fluid">
-        <a href="search.html" class="navbar-brand" style="font-size: 25px;font-weight: 600;margin-left: 10px;font-family:'Courier New', Courier, monospace;">Search Github Profile</a>
+        <a
+          href="search.html"
+          class="navbar-brand"
+          style="
+            font-size: 20px;
+            font-weight: 600;
+            margin-left: 10px;
+            font-family: 'Courier New', Courier, monospace;
+          "
+          >Search Github Profile</a
+        >
         <div class="d-flex">
           <div class="input-group">
             <div class="input-group-text" id="basic-addon1">@</div>
@@ -77,6 +90,7 @@
         <div class="row" id="profileList"></div>
       </div>
     </main>
+
     <script>
       // kullanıcıları ara
       function searchUsers(query) {
@@ -90,7 +104,7 @@
             listUser(data.items);
           } else {
             console.error("Hata:", this.statusText);
-            alert("User not found."+errorMsg);
+            alert("User not found." + errorMsg);
           }
         });
 
@@ -105,15 +119,15 @@
         profileList.innerHTML = "";
         users.forEach((user) => {
           const card = `
-            <div class="col-12 col-md-4 mb-3">
-              <div class="card text-dark d-flex justify-content-center align-items-center">
-                <img src="${user.avatar_url}" class="card-img-top card-img-bottom mt-2" alt="photo" style="width: 100px; height: 100px; object-fit: cover;">
-                <div class="card-body">
-                  <h5 class="card-title">${user.login}</h5>
-                  <button class="btn btn-primary" onclick="setProfile('${user.login}')">Set Profile</button>
-                </div>
-              </div>
-            </div>`;
+    <div class="col-12 col-lg-3 mb-3">
+        <div class="card text-dark d-flex justify-content-center align-items-center flex-row">
+          <img src="${user.avatar_url}" class="m-2 img" alt="photo" style="width: 100px; height: 100px; object-fit: cover;">
+        <div class="card-body">
+          <h5 class="card-title">${user.login}</h5>
+          <button class="btn btn-primary" onclick="setProfile('${user.login}')">Set Profile</button>
+        </div>
+      </div>
+    </div>`;
           profileList.innerHTML += card;
         });
       }
@@ -137,6 +151,7 @@
             alert("Please enter a username. ");
           }
         });
+        //user bulunamadı çalışmıyor
     </script>
   </body>
 </html>
